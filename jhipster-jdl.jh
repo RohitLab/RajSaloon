@@ -1,0 +1,38 @@
+
+/**
+ * The User entity.
+ */
+entity User {
+    userId UUID required,
+	name String,
+	phoneNumber String,
+	
+}
+entity BookingSlot {
+    bookingId Long, 
+    description String
+	bookingDate LocalDate required,
+	slotStarting LocalDate,
+	slotEnding LocalDate,
+}
+entity AdminUser {
+  userId UUID,
+  name String,
+  phoneNumber String,
+  encryptedPassword String required,
+  
+}
+
+// defining multiple OneToMany relationships with comments
+relationship OneToMany {
+	User to BookingSlot{user},
+	
+}
+
+paginate User with pagination
+
+// Set service options to all except few
+service all with serviceImpl
+
+// Set an angular suffix
+// angularSuffix * with mySuffix
