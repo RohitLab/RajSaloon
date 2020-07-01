@@ -1,0 +1,44 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.raj.app"
+    },
+    "jhipsterVersion": "6.10.0",
+    "applicationType": "monolith",
+    "baseName": "rajsaloon",
+    "packageName": "com.raj.app",
+    "packageFolder": "com/raj/app",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "no",
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "mysql",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": true,
+    "jwtSecretKey": "MmJjODZjYjdhNWFjMjhkNGM3MDhjMTUxNjNlNzJhOTVjNDNhMTRmZmUwOWZlN2JmNmQ0NjQ5ZTg1ODhlMjU3OWU3ZTk0NDI3NjUxOWRiYWY5MmIxMGYxM2RkMjQ2YTdlYjlhZWY1MzU2NzE1M2U1ZmExODU2MjJmZDU1MWJlYzY=",
+    "embeddableLaunchScript": false,
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "clientFramework": "angularX",
+    "clientTheme": "cosmo",
+    "clientThemeVariant": "primary",
+    "creationTimestamp": 1593596318297,
+    "testFrameworks": ["cucumber"],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [
+      {
+        "name": "generator-jhipster-electron",
+        "version": "1.1.0"
+      }
+    ],
+    "enableTranslation": false,
+    "blueprints": []
+  }
+}
