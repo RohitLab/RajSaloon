@@ -2,7 +2,7 @@
 /**
  * The User entity.
  */
-entity User {
+entity NewUser {
     userId UUID required,
 	name String,
 	phoneNumber String,
@@ -25,11 +25,11 @@ entity AdminUser {
 
 // defining multiple OneToMany relationships with comments
 relationship OneToMany {
-	User to BookingSlot{user},
+	NewUser to BookingSlot{NewUser},
 	
 }
 
-paginate User with pagination
+paginate NewUser with pagination
 
 // Set service options to all except few
 service all with serviceImpl

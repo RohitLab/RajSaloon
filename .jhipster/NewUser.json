@@ -1,0 +1,38 @@
+{
+  "name": "NewUser",
+  "fields": [
+    {
+      "fieldName": "userId",
+      "fieldType": "UUID",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "phoneNumber",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "bookingSlot",
+      "otherEntityRelationshipName": "newUser",
+      "relationshipName": "bookingSlot"
+    }
+  ],
+  "changelogDate": "20200701110431",
+  "javadoc": "The User entity.",
+  "entityTableName": "new_user",
+  "dto": "mapstruct",
+  "pagination": "pagination",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

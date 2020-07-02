@@ -1,0 +1,52 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="bookingSlot">
+            <h2><span>Booking Slot</span> {{ bookingSlot.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Booking Id</span></dt>
+                <dd>
+                    <span>{{ bookingSlot.bookingId }}</span>
+                </dd>
+                <dt><span>Description</span></dt>
+                <dd>
+                    <span>{{ bookingSlot.description }}</span>
+                </dd>
+                <dt><span>Booking Date</span></dt>
+                <dd>
+                    <span>{{ bookingSlot.bookingDate }}</span>
+                </dd>
+                <dt><span>Slot Starting</span></dt>
+                <dd>
+                    <span>{{ bookingSlot.slotStarting }}</span>
+                </dd>
+                <dt><span>Slot Ending</span></dt>
+                <dd>
+                    <span>{{ bookingSlot.slotEnding }}</span>
+                </dd>
+                <dt><span>New User</span></dt>
+                <dd>
+                    <div *ngIf="bookingSlot.newUserId">
+                        <a [routerLink]="['/new-user', bookingSlot.newUserId, 'view']">{{ bookingSlot.newUserId }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/booking-slot', bookingSlot.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

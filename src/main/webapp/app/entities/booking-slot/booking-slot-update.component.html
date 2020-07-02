@@ -1,0 +1,82 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-booking-slot-heading">Create or edit a Booking Slot</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_bookingId">Booking Id</label>
+                    <input type="number" class="form-control" name="bookingId" id="field_bookingId"
+                           formControlName="bookingId"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_description">Description</label>
+                    <input type="text" class="form-control" name="description" id="field_description"
+                           formControlName="description"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_bookingDate">Booking Date</label>
+                    <div class="input-group">
+                        <input id="field_bookingDate" type="text" class="form-control" name="bookingDate" ngbDatepicker #bookingDateDp="ngbDatepicker" formControlName="bookingDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="bookingDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div *ngIf="editForm.get('bookingDate')!.invalid && (editForm.get('bookingDate')!.dirty || editForm.get('bookingDate')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('bookingDate')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_slotStarting">Slot Starting</label>
+                    <div class="input-group">
+                        <input id="field_slotStarting" type="text" class="form-control" name="slotStarting" ngbDatepicker #slotStartingDp="ngbDatepicker" formControlName="slotStarting"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="slotStartingDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_slotEnding">Slot Ending</label>
+                    <div class="input-group">
+                        <input id="field_slotEnding" type="text" class="form-control" name="slotEnding" ngbDatepicker #slotEndingDp="ngbDatepicker" formControlName="slotEnding"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="slotEndingDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_newUser">New User</label>
+                    <select class="form-control" id="field_newUser" name="newUser" formControlName="newUserId">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="newUserOption.id" *ngFor="let newUserOption of newusers; trackBy: trackById">{{ newUserOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

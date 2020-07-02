@@ -1,0 +1,46 @@
+{
+  "name": "BookingSlot",
+  "fields": [
+    {
+      "fieldName": "bookingId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "bookingDate",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "slotStarting",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "slotEnding",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "newUser",
+      "otherEntityRelationshipName": "bookingSlot",
+      "relationshipName": "newUser",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20200701110531",
+  "entityTableName": "booking_slot",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}
