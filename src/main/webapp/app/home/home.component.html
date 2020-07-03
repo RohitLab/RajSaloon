@@ -4,16 +4,16 @@
     </div>
 
     <div class="col-md-9">
-        <h1 class="display-4">Welcome, Java Hipster!</h1>
+        <h1 class="display-4">Welcome, Raj Saloon!</h1>
 
-        <p class="lead">This is your homepage</p>
+        <p class="lead">Please fill below form to book appointment</p>
 
         <div [ngSwitch]="isAuthenticated()">
             <div class="alert alert-success" *ngSwitchCase="true">
                 <span id="home-logged-message" *ngIf="account">You are logged in as user "{{ account.login }}".</span>
             </div>
 
-            <div class="alert alert-warning" *ngSwitchCase="false">
+            <!-- <div class="alert alert-warning" *ngSwitchCase="false">
                 <span>If you want to </span>
                 <a class="alert-link" (click)="login()">sign in</a><span>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").</span>
             </div>
@@ -21,23 +21,63 @@
             <div class="alert alert-warning" *ngSwitchCase="false">
                 <span>You don't have an account yet?</span>&nbsp;
                 <a class="alert-link" routerLink="account/register">Register a new account</a>
-            </div>
+            </div> -->
+
+            <div class="alert alert-success" *ngSwitchCase="false">
+                <div *ngIf="!submitted">
+                  <form #heroForm="ngForm" (ngSubmit)="onSubmit(heroForm.value)">
+                    <div class="form-group">
+                      <label for="name">Name</label>
+                      <input type="text" class="form-control" name="name" ngModel #name="ngModel" required>
+                      <div class="alert alert-danger" [hidden]="name.valid || name.pristine">Name is required</div>
+                    </div>
+                    <div class="form-group">
+                      <label for="alterEgo">Mobile Number</label>
+                      <input type="text" class="form-control" name="alterEgo" ngModel #alterEgo="ngModel" required>
+                      <div class="alert alert-danger" [hidden]="alterEgo.valid || alterEgo.pristine">Alter Ego is required</div>
+                    </div>
+                    <div class="row">
+                    <div class="col-md-3">
+                       
+                          <div class="form-group">
+                              <label for="dateSelector">Select Date</label>
+                              <input class="form-control" name="dateSelector" (click)="d.toggle()"  placeholder="yyyy-mm-dd"
+                                    [minDate]="minDate"  [maxDate]="maxDate"
+                                     [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
+                          </div>
+                    </div>
+                    <div class="col-md-3">
+                    <div class="form-group">
+                      <label for="slots">Select Slot</label>
+                      <select class="form-control" name="power" ngModel #slots="ngModel" required>
+                        <option *ngFor="let slot of powers" [value]="slot">{{ slot }}</option>
+                      </select>
+                      <div class="alert alert-danger" [hidden]="slots.valid || slots.pristine">Select slot</div>
+                    </div>
+                </div>
+                </div>
+                    <button type="submit" class="btn btn-success" [disabled]="!heroForm.valid">Submit</button>
+                  </form>
+                </div>
+                <div *ngIf="submitted">
+                  <h2>You submitted the following:</h2>
+                  <div class="row">
+                    <div class="col-md-2">Name</div>
+                    <div class="col-md-10 pull-left">{{ form.name }}</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-2">Alter Ego</div>
+                    <div class="col-md-10 pull-left">{{ form.alterEgo }}</div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-2">Power</div>
+                    <div class="col-md-10 pull-left">{{ form.power }}</div>
+                  </div>
+                  <br /><br />
+                  <!-- <button class="btn btn-default" (click)="submitted=false">Edit</button> -->
+                </div>
+              </div>
         </div>
 
-        <p>
-            If you have any question on JHipster:
-        </p>
-
-        <ul>
-            <li><a href="https://www.jhipster.tech/" target="_blank" rel="noopener noreferrer">JHipster homepage</a></li>
-            <li><a href="http://stackoverflow.com/tags/jhipster/info" target="_blank" rel="noopener noreferrer">JHipster on Stack Overflow</a></li>
-            <li><a href="https://github.com/jhipster/generator-jhipster/issues?state=open" target="_blank" rel="noopener noreferrer">JHipster bug tracker</a></li>
-            <li><a href="https://gitter.im/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer">JHipster public chat room</a></li>
-            <li><a href="https://twitter.com/jhipster" target="_blank" rel="noopener noreferrer">follow @jhipster on Twitter</a></li>
-        </ul>
-
-        <p>
-            <span>If you like JHipster, don't forget to give us a star on</span> <a href="https://github.com/jhipster/generator-jhipster" target="_blank" rel="noopener noreferrer">GitHub</a>!
-        </p>
     </div>
 </div>
