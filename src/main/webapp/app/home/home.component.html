@@ -32,17 +32,20 @@
                       <div class="alert alert-danger" [hidden]="name.valid || name.pristine">Name is required</div>
                     </div>
                     <div class="form-group">
-                      <label for="alterEgo">Alter Ego</label>
+                      <label for="alterEgo">Mobile Number</label>
                       <input type="text" class="form-control" name="alterEgo" ngModel #alterEgo="ngModel" required>
                       <div class="alert alert-danger" [hidden]="alterEgo.valid || alterEgo.pristine">Alter Ego is required</div>
                     </div>
                     <div class="row">
                     <div class="col-md-3">
-                        <div class="form-group">
-                            <label for="appointmentDate">Select Appointment Date</label>
-                            
-                            <input type="text" class="form-control" name="appointmentDate" ngModel #appointmentDate="ngModel" required>
-                            <div class="alert alert-danger" [hidden]="appointmentDate.valid || appointmentDate.pristine">Please select date</div>
+
+                       
+                          <div class="form-group">
+                              <label for="dateSelector">Select Date</label>
+                              <input class="form-control" name="dateSelector" (click)="d.toggle()"  placeholder="yyyy-mm-dd"
+                                    [minDate]="minDate"  [maxDate]="maxDate"
+                                    ngModel ngbDatepicker #d="ngbDatepicker">
+
                           </div>
                     </div>
                     <div class="col-md-3">
@@ -55,7 +58,8 @@
                     </div>
                 </div>
                 </div>
-                    <button type="submit" class="btn btn-default" [disabled]="!heroForm.valid">Submit</button>
+
+                    <button type="submit" class="btn btn-success" [disabled]="!heroForm.valid">Submit</button>
                   </form>
                 </div>
                 <div *ngIf="submitted">
@@ -72,12 +76,9 @@
                     <div class="col-md-2">Power</div>
                     <div class="col-md-10 pull-left">{{ form.power }}</div>
                   </div>
-                  <br />
-                  Raw output from form.value:
-                  <br />
-                  {{ form | json }}
+
                   <br /><br />
-                  <button class="btn btn-default" (click)="submitted=false">Edit</button>
+                  <!-- <button class="btn btn-default" (click)="submitted=false">Edit</button> -->
                 </div>
               </div>
         </div>
